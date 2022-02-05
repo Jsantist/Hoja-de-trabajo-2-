@@ -4,10 +4,60 @@
  */
 package hoja2_ed;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+
 /**
  *
  * @author jsken
  */
 public class Datos {
+    
+    FileReader leer;
+    FileWriter escribir;
+    PrintWriter linea;
+    BufferedReader almacenamiento;
+    
+    public void newOperation(File datos) throws IOException{
+        BufferedReader br = new BufferedReader( new InputStreamReader(System.in));
+        escribir= new FileWriter(datos,true);
+        linea = new PrintWriter(escribir);
+        
+        System.out.println("Ingrese una operacion");
+        String cadena= br.readLine();
+        
+        
+        linea.println(cadena);
+       
+        linea.close();
+        escribir.close();
+        
+    }
+    
+    public void leerOperaciones(File Datos) throws IOException{
+        
+        String caracter="",cadena;
+        int cont=0;
+        Datos = new File("datos.txt");
+        leer = new FileReader(Datos);
+        almacenamiento = new BufferedReader(leer);
+        
+         while (caracter!= null){
+             cont = cont+1;
+             caracter=almacenamiento.readLine();
+             cadena=caracter;
+             
+            Operaciones<Integer> operando = new Operaciones ();
+            int total = operando.Evaluate(cadena);
+            System.out.println("el total de la operación "+cont+" es :"+total);
+         }
+        
+    }
+    
     
 }

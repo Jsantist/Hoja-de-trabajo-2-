@@ -5,6 +5,7 @@
  */
 package hoja2_ed;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.InputStreamReader;
 import java.io.IOException;
 import java.util.Arrays;
@@ -22,30 +23,22 @@ public class Hoja2_ED {
      */
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
-         
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String cadena;
-        System.out.println("ingrese una cadena ");
-        cadena = br.readLine();
-        System.out.println(cadena);
-        String[] parts =  cadena.split("");
-        List<String> partes = Arrays.asList(parts);
-        System.out.println(partes);
-        System.out.println(partes.get(0));
+
+        File Archivo;
+        Archivo = new File("datos.txt");
+        Datos dat = new Datos();
         
-        Operaciones<Integer> operando = new Operaciones ();
+        System.out.println("Bienvenido a calculadora ");
         
-         for (int i=0;i<partes.size();i++){
-            if (Character.isDigit(cadena.charAt(i))){
-                System.out.println(partes.get(i)+"es dígito");
+        if (!Archivo.exists()){
+            try{
+                Archivo.createNewFile();
+                System.out.println("Al parecer no hay ningún usuario creado, por favor registrate");
+                dat.newOperation(Archivo);
+                
+            }catch(IOException ex){
+                System.out.println(ex);
             }
-            else{
-                System.out.println(partes.get(i)+"no es digito");
-            }
-        }
-        
-        int total = operando.Evaluate(cadena);
-        System.out.println(total);
                 
         
           
@@ -53,4 +46,5 @@ public class Hoja2_ED {
     }
 
     
+}
 }
