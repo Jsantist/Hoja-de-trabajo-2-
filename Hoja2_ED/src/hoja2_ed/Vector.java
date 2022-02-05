@@ -18,15 +18,18 @@ public class Vector<T> implements IStack<T>, IPostfixCalc {
 
     @Override
     public int Evaluate(String dato) {
+        //la cadena ingresada se convierte en lista 
         String cadena = dato;
         Vector<Integer> opera = new Vector();
         String[] parts =  dato.split("|");
         List<String> partes = Arrays.asList(parts);
         int i;
-        
+        //utiliza la lista creada para Operar cada uno de los caracteres dentro de la misma
         for (i=0;i<partes.size();i++){
-            
+            //verifica si el caracter es un número o un operando 
+            //si es número se agrega a la pila , sino se opera con el valor mas reciente de la pila 
             if (Character.isDigit(cadena.charAt(i))){
+                
                 int numero;
                 numero = Integer.parseInt(partes.get(i));
                 opera.push(numero);

@@ -24,6 +24,7 @@ public class Datos {
     BufferedReader almacenamiento;
     
     public void newOperation(File datos) throws IOException{
+        //método para ingresar una nueva operación en caso de que no exista ninguna 
         BufferedReader br = new BufferedReader( new InputStreamReader(System.in));
         escribir= new FileWriter(datos,true);
         linea = new PrintWriter(escribir);
@@ -40,7 +41,7 @@ public class Datos {
     }
     
     public void leerOperaciones(File Datos) throws IOException{
-        
+        //método para leer todas las operaciones dentro del archivo
         String caracter="",cadena;
         int cont=0;
         Datos = new File("datos.txt");

@@ -23,18 +23,20 @@ public class Hoja2_ED {
      */
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
+        //Crea objeto para archivo a utilizar
 
         File Archivo;
         Archivo = new File("datos.txt");
         Datos dat = new Datos();
         
         System.out.println("Bienvenido a calculadora ");
-        
+        //si no existe ningún archivo, este lo crea. De lo contrario procede a operar
         if (!Archivo.exists()){
             try{
                 Archivo.createNewFile();
                 System.out.println("Al parecer no hay ninguna operación, por favor ingresa una nueva ");
                 dat.newOperation(Archivo);
+                dat.leerOperaciones(Archivo);
                 
             }catch(IOException ex){
                 System.out.println(ex);
