@@ -39,6 +39,9 @@ public class Hoja2_ED {
             }catch(IOException ex){
                 System.out.println(ex);
             }
+        }else{
+            dat.leerOperaciones(Archivo);
+        }
                 
         
           
@@ -47,4 +50,4 @@ public class Hoja2_ED {
 
     
 }
-}
+

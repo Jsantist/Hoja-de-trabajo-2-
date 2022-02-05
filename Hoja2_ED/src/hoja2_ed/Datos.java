@@ -52,7 +52,7 @@ public class Datos {
              caracter=almacenamiento.readLine();
              cadena=caracter;
              
-            Operaciones<Integer> operando = new Operaciones ();
+            Vector<Integer> operando = new Vector ();
             int total = operando.Evaluate(cadena);
             System.out.println("el total de la operación "+cont+" es :"+total);
          }

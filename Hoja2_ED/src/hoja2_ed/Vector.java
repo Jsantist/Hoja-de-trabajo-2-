@@ -12,14 +12,14 @@ import java.util.Stack;
  *
  * @author jsken
  */
-public class Operaciones<T> implements IStack<T>, IPostfixCalc {
+public class Vector<T> implements IStack<T>, IPostfixCalc {
     
     Stack<T> pila = new Stack();
 
     @Override
     public int Evaluate(String dato) {
         String cadena = dato;
-        Operaciones<Integer> opera = new Operaciones();
+        Vector<Integer> opera = new Vector();
         String[] parts =  dato.split("|");
         List<String> partes = Arrays.asList(parts);
         int i;
