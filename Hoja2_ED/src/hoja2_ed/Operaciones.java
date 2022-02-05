@@ -18,18 +18,19 @@ public class Operaciones<T> implements IStack<T>, IPostfixCalc {
 
     @Override
     public int Evaluate(String dato) {
+        String cadena = dato;
         Operaciones<Integer> opera = new Operaciones();
         String[] parts =  dato.split("|");
         List<String> partes = Arrays.asList(parts);
         int i;
         
-        for (i=0;i<=partes.size();i++){
-          if (pila.size()>1){  
-            if (Character.isDigit(dato.charAt(i))){
+        for (i=0;i<partes.size();i++){
+            
+            if (Character.isDigit(cadena.charAt(i))){
                 int numero;
                 numero = Integer.parseInt(partes.get(i));
                 opera.push(numero);
-            }else if(partes.get(i)== "+") {
+            }else if(partes.get(i).equals("+")) {
                 int numero1;
                 int numero2;
                 int total;
@@ -39,8 +40,11 @@ public class Operaciones<T> implements IStack<T>, IPostfixCalc {
                 
                 total= numero1 + numero2;
                 opera.push(total);
+                if(pila.size()==1){
+                    break;
+                }
                 
-            }else if(partes.get(i)== "-"){
+            }else if(partes.get(i).equals("-")){
                 int numero1;
                 int numero2;
                 int total;
@@ -50,8 +54,11 @@ public class Operaciones<T> implements IStack<T>, IPostfixCalc {
                 
                 total= numero1 - numero2;
                 opera.push(total);
+                if(pila.size()==1){
+                    break;
+                }
                 
-            }else if(partes.get(i)== "*"){
+            }else if(partes.get(i).equals("*")){
                 int numero1;
                 int numero2;
                 int total;
@@ -61,8 +68,11 @@ public class Operaciones<T> implements IStack<T>, IPostfixCalc {
                 
                 total= numero1 * numero2;
                 opera.push(total);
+                if(pila.size()==1){
+                    break;
+                }
                 
-            }else if(partes.get(i)== "/"){
+            }else if(partes.get(i).equals("/")){
                 int numero1;
                 int numero2;
                 int total;
@@ -72,17 +82,20 @@ public class Operaciones<T> implements IStack<T>, IPostfixCalc {
                 
                 total= numero1 / numero2;
                 opera.push(total);
+                if(pila.size()==1){
+                    break;
+                }
                 
             }else {
-                System.out.println("esta operación no se puede realizar");
+                System.out.println("esta operación no se puede realizar debido a que el indice es incorrecto "+i);
             }
-          } 
+          
             
             
         }
         
         
-        throw new UnsupportedOperationException("Not supported yet."); 
+         return opera.peek();
     }
 
     @Override
@@ -92,12 +105,12 @@ public class Operaciones<T> implements IStack<T>, IPostfixCalc {
 
     @Override
     public T pull() {
-        return pila.remove(0);
+        return pila.pop();
     }
 
     @Override
     public T peek() {
-        return pila.get(0);
+        return pila.peek();
     }
 
     @Override

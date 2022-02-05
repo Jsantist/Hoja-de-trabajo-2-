@@ -22,16 +22,32 @@ public class Hoja2_ED {
      */
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
-        // hola banda 
+         
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String cadena;
         System.out.println("ingrese una cadena ");
         cadena = br.readLine();
         System.out.println(cadena);
-        String[] parts =  cadena.split("|");
+        String[] parts =  cadena.split("");
         List<String> partes = Arrays.asList(parts);
         System.out.println(partes);
         System.out.println(partes.get(0));
+        
+        Operaciones<Integer> operando = new Operaciones ();
+        
+         for (int i=0;i<partes.size();i++){
+            if (Character.isDigit(cadena.charAt(i))){
+                System.out.println(partes.get(i)+"es dígito");
+            }
+            else{
+                System.out.println(partes.get(i)+"no es digito");
+            }
+        }
+        
+        int total = operando.Evaluate(cadena);
+        System.out.println(total);
+                
+        
           
        
     }
