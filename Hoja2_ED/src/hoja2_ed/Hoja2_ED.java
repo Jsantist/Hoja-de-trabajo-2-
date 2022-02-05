@@ -33,7 +33,7 @@ public class Hoja2_ED {
         if (!Archivo.exists()){
             try{
                 Archivo.createNewFile();
-                System.out.println("Al parecer no hay ningún usuario creado, por favor registrate");
+                System.out.println("Al parecer no hay ninguna operación, por favor ingresa una nueva ");
                 dat.newOperation(Archivo);
                 
             }catch(IOException ex){
